@@ -1,0 +1,19 @@
+.searchForm__control {
+   display: grid;
+   position: relative;
+}
+
+.searchForm__form {
+   display: inline;
+   flex-wrap: wrap;
+   gap: 1rem;
+   text-align: left;
+   margin-bottom: 0;
+}
+
+.searchForm__form input {
+   width: 400px;
+   height: 30px;
+   margin: auto;
+   border-radius: 10px;
+}

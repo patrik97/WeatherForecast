@@ -1,0 +1,19 @@
+.whisperer__control {
+   background-color: white;
+   width: 400px;
+   margin: auto;
+   border-radius: 0 0 10px 10px;
+   margin-top: 0;
+   position: relative;
+}
+
+.whisperer__control--not_found {
+   padding-top: 15px;
+}
+
+.whisperer__control ul {
+   list-style-type: none;
+   text-align: left;
+   color: black;
+   padding-inline-start: 0;
+}

@@ -1,0 +1,1 @@
+export const ITEMS_IN_WHISPERER_COUNT = 5;
