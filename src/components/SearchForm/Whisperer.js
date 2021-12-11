@@ -1,10 +1,8 @@
 import React from 'react';
-import { ITEMS_IN_WHISPERER_COUNT } from '../../config';
+import { DATA, ITEMS_IN_WHISPERER_COUNT } from '../../config';
 import MenuItem from '../UI/MenuItem';
 
 import './Whisperer.css';
-
-const DATA = require('../../city.list.json');
 
 const Whisperer = props => {
    if (!props.searchValue || props.searchValue === '') return <div></div>;

@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
-
+import { DATA } from '../../config';
 import './SearchForm.css';
 import Whisperer from './Whisperer';
 
-const SearchForm = () => {
+const SearchForm = props => {
    const [value, setValue] = useState('');
 
    const onSubmitHandler = event => {
       event.preventDefault();
-      submitForm();
+      let selectedCity;
+      for (let i = 0; i < DATA.length; i++) {
+         if (DATA[i].name.toLowerCase() === value.trim().toLocaleLowerCase()) {
+            selectedCity = DATA[i];
+            break;
+         }
+      }
+
+      //if (!selectedCity) TODO: error message
+      submitForm(selectedCity);
    };
 
-   const submitForm = () => {
+   const submitForm = selectedCity => {
       setValue('');
+      props.fetchData(selectedCity);
    };
 
    const onChangeHandler = event => {
       setValue(event.target.value.trimStart());
    };
 
-   const setValueFromWhisperer = selectedCity => {
-      submitForm();
+   const setValueFromWhisperer = async selectedCity => {
+      submitForm(selectedCity);
    };
 
    return (
