@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SearchForm from './components/SearchForm/SearchForm';
-import ForecastCard from './components/ForecastCard/ForecastCard';
+import ForecastCards from './components/ForecastCards/ForecastCards';
 
 import './app.css';
 
@@ -13,14 +13,25 @@ function App() {
       const forData = {
          name: data.city.name,
          country: data.city.country,
-         list: [list[0], list[8], list[16], list[24], list[32], list[4]],
+         list: [list[0], list[8], list[16], list[24], list[32]],
       };
       setForecastData(forData);
    };
 
+   const defaultPosition = () => {
+      // London
+      fetch(
+         `https://api.openweathermap.org/data/2.5/forecast?id=${2643743}&appid=ef8dfe83011b0540d556dfe6ae121abc&units=metric`
+      )
+         .then(result => result.json())
+         .then(data => handleData(data));
+   };
+
+   if (!forecastData) defaultPosition();
+
    const getData = selectedCity => {
       fetch(
-         `https://api.openweathermap.org/data/2.5/forecast?id=${selectedCity.id}&appid=ef8dfe83011b0540d556dfe6ae121abc`
+         `https://api.openweathermap.org/data/2.5/forecast?id=${selectedCity.id}&appid=ef8dfe83011b0540d556dfe6ae121abc&units=metric`
       )
          .then(result => result.json())
          .then(data => handleData(data));
@@ -29,7 +40,7 @@ function App() {
    return (
       <div className="app">
          <SearchForm fetchData={getData} />
-         <ForecastCard data={forecastData} />
+         {forecastData && <ForecastCards data={forecastData} />}
       </div>
    );
 }

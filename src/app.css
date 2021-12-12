@@ -5,6 +5,7 @@
    box-sizing: border-box;
    background-color: #000099;
    width: 700px;
+   height: auto;
    margin: auto;
    margin-top: 50px;
    padding: 30px 10px;

@@ -38,12 +38,12 @@ const SearchForm = props => {
          <form onSubmit={onSubmitHandler}>
             <div className="searchForm__form">
                <input type="text" value={value} onChange={onChangeHandler} />
+               <Whisperer
+                  searchValue={value}
+                  setValueFromWhisperer={setValueFromWhisperer}
+               />
             </div>
          </form>
-         <Whisperer
-            searchValue={value}
-            setValueFromWhisperer={setValueFromWhisperer}
-         />
       </div>
    );
 };

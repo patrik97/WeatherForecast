@@ -1,0 +1,16 @@
+.forecastCard__control {
+   margin: 50px;
+   position: relative;
+}
+
+.forecastCard__control label {
+   padding: 20px;
+   font-size: 40px;
+   font-weight: bold;
+}
+
+.forecastCard__control ul {
+   list-style-type: none;
+   text-align: center;
+   padding-inline-start: 0;
+}
