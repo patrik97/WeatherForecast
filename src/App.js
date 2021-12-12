@@ -3,9 +3,12 @@ import SearchForm from './components/SearchForm/SearchForm';
 import ForecastCards from './components/ForecastCards/ForecastCards';
 
 import './app.css';
+import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
 function App() {
    const [forecastData, setForecastData] = useState();
+   const [overlayClassName, setOverlayClassName] = useState('overlay hidden');
+   const [errorMessageShown, setErrorMessageShown] = useState(false);
 
    const handleData = data => {
       // As there is 3-hour forecast data, only every 8th data is relevant (0, 8, 16, 24, 32, 40);
@@ -58,10 +61,27 @@ function App() {
          .then(data => handleData(data));
    };
 
+   const showErrorMessage = () => {
+      setOverlayClassName('overlay');
+      setErrorMessageShown(true);
+   };
+
+   const dismissErrorMessage = () => {
+      setOverlayClassName('overlay hidden');
+      setErrorMessageShown(false);
+   };
+
    return (
-      <div className="app">
-         <SearchForm fetchData={getData} />
-         {forecastData && <ForecastCards data={forecastData} />}
+      <div>
+         <div className="app">
+            <SearchForm
+               fetchData={getData}
+               showErrorMessage={showErrorMessage}
+            />
+            {forecastData && <ForecastCards data={forecastData} />}
+         </div>
+         <div className={overlayClassName}></div>
+         <ErrorMessage dismiss={dismissErrorMessage} show={errorMessageShown} />
       </div>
    );
 }

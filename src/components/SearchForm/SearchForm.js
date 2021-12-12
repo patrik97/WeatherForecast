@@ -16,7 +16,10 @@ const SearchForm = props => {
          }
       }
 
-      //if (!selectedCity) TODO: error message
+      if (!selectedCity) {
+         props.showErrorMessage();
+         return;
+      }
       submitForm(selectedCity);
    };
 

@@ -26,7 +26,8 @@ const Whisperer = props => {
    if (filteredCities.length === 0) {
       return (
          <div className="whisperer__control--not_found">
-            Sorry. No city with given name found! Please enter another name.
+            Sorry. No cities starting with given text found! Please enter
+            another name.
          </div>
       );
    }
