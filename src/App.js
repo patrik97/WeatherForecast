@@ -18,16 +18,37 @@ function App() {
       setForecastData(forData);
    };
 
-   const defaultPosition = () => {
+   // WARNING: showCurrentLocation and loadPosition methods are strongly inspired by https://www.w3schools.com/html/html5_geolocation.asp
+   const showCurrentLocation = position => {
+      const { latitude, longitude } = position.coords;
+      const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=ef8dfe83011b0540d556dfe6ae121abc&units=metric`;
+      executeRequest(requestUrl);
+   };
+
+   const loadPosition = () => {
+      if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(
+            showCurrentLocation,
+            loadDefaultPosition
+         );
+      } else {
+         loadDefaultPosition();
+      }
+   };
+
+   const loadDefaultPosition = () => {
       // London
-      fetch(
-         `https://api.openweathermap.org/data/2.5/forecast?id=${2643743}&appid=ef8dfe83011b0540d556dfe6ae121abc&units=metric`
-      )
+      const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?id=${2643743}&appid=ef8dfe83011b0540d556dfe6ae121abc&units=metric`;
+      executeRequest(requestUrl);
+   };
+
+   const executeRequest = requestUrl => {
+      fetch(requestUrl)
          .then(result => result.json())
          .then(data => handleData(data));
    };
 
-   if (!forecastData) defaultPosition();
+   if (!forecastData) loadPosition();
 
    const getData = selectedCity => {
       fetch(
