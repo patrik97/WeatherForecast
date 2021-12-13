@@ -40,7 +40,12 @@ const SearchForm = props => {
       <div className="searchForm__control">
          <form onSubmit={onSubmitHandler}>
             <div className="searchForm__form">
-               <input type="text" value={value} onChange={onChangeHandler} />
+               <input
+                  type="text"
+                  placeholder="Location name"
+                  value={value}
+                  onChange={onChangeHandler}
+               />
                <Whisperer
                   searchValue={value}
                   setValueFromWhisperer={setValueFromWhisperer}
