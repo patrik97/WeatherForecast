@@ -6,7 +6,7 @@ Application sets user's location as default place or London, UK if permission to
 If there is no city name starting with given text (in whisperer), app does not show whisperer but a line of text with warning insted. In case the user tries to submit the form with city name that does not exists, error message appears. 
 
 ## Instalation, running
-After cloning the repository, `npm instal`" command must be called to install the packages. 
+After cloning the repository, `npm instal` command must be called to install the packages. 
 Run the application with `npm start` command. 
 
 ## Browsers
